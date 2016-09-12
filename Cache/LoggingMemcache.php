@@ -881,6 +881,8 @@ if ($extension->getVersion()=='1.0.2') {
                 $this->initialize = true;
             }
             parent::__construct($persistent_id);
+            if (defined('\Memcached::OPT_CLIENT_MODE') && defined('\Memcached::DYNAMIC_CLIENT_MODE'))
+                $this->setOption(\Memcached::OPT_CLIENT_MODE, \Memcached::DYNAMIC_CLIENT_MODE);
         }
         private $calls;
         private $initialize;
